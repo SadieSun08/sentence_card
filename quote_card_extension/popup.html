@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>金句卡片生成器</title>
+    <style>
+        /* 添加一些基本样式 */
+        body { font-family: Arial, sans-serif; }
+        .template-list { list-style-type: none; padding: 0; }
+        .template-item { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>选择卡片模板</h1>
+    <ul class="template-list" id="templateList">
+        <!-- 预设模板将动态添加到这里 -->
+    </ul>
+    <button id="importTemplate">导入模板</button>
+    <button id="exportTemplate">导出模板</button>
+    <div class="style-settings">
+        <h2>样式定制</h2>
+        <label>背景设置:
+            <select id="backgroundSelect">
+                <option value="color">纯色背景</option>
+                <option value="gradient">渐变背景</option>
+                <option value="image">图片背景</option>
+                <option value="custom">自定义背景上传</option>
+            </select>
+        </label>
+        <label id="backgroundColorLabel" style="display: none;">背景颜色:
+            <input type="color" id="backgroundColor" value="#ffffff">
+        </label>
+        <label id="backgroundImageLabel" style="display: none;">上传背景图片:
+            <input type="file" id="backgroundImage" accept="image/*">
+        </label>
+        <label>字体设置:
+            <select id="fontSelect">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+            </select>
+        </label>
+        <label>字体大小:
+            <input type="number" id="fontSize" value="16" min="10" max="72">
+        </label>
+        <label>字体颜色:
+            <input type="color" id="fontColor" value="#000000">
+        </label>
+        <label>文字对齐方式:
+            <select id="textAlign">
+                <option value="left">左对齐</option>
+                <option value="center">居中</option>
+                <option value="right">右对齐</option>
+            </select>
+        </label>
+        <label>阴影效果:
+            <input type="checkbox" id="shadowEffect">
+        </label>
+        <label>边框样式:
+            <input type="text" id="borderStyle" placeholder="如: 1px solid #000">
+        </label>
+        <label>水印选项:
+            <input type="text" id="watermark" placeholder="输入水印文字">
+        </label>
+    </div>
+    <div class="export-settings">
+        <h2>导出设置</h2>
+        <label>图片格式:
+            <select id="imageFormat">
+                <option value="png">PNG</option>
+                <option value="jpeg">JPEG</option>
+                <option value="webp">WEBP</option>
+            </select>
+        </label>
+        <label>图片质量:
+            <input type="range" id="imageQuality" min="0.1" max="1" step="0.1" value="0.8">
+        </label>
+        <label>导出尺寸:
+            <input type="number" id="exportWidth" placeholder="宽度" value="300">
+            <input type="number" id="exportHeight" placeholder="高度" value="150">
+        </label>
+        <button id="exportImages">批量导出</button>
+    </div>
+    <button id="generate">生成金句卡片</button>
+    <div id="card" style="display: none;">
+        <p id="cardContent"></p>
+        <canvas id="cardCanvas" width="300" height="150"></canvas>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html> 
